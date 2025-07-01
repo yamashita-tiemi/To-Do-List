@@ -92,7 +92,7 @@ const App: React.FC = () => {
     fetchTasks();
   }, []);
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
       addTask();
     }
@@ -116,34 +116,34 @@ const App: React.FC = () => {
         </div>
 
         <div className="add-task-section">
-          <Input
-            type="text"
-            value={newTask}
-            onChange={handleInputChange}
-            onKeyPress={handleKeyPress}
-            placeholder="Adicionar nova tarefa..."
-            disabled={isLoading}
-          />
-          <Button
-            onClick={addTask}
-            disabled={isLoading || !newTask.trim()}
-            title="Adicionar tarefa"
-            $backgroundColor="#3b82f6"
-            $hoverColor="#2563eb"
-          >
-            <Plus size={16} />
-          </Button>
+          <label htmlFor="new-task">Nova Tarefa</label>
+          <div className="add-task-input">
+            <Input
+              type="text"
+              value={newTask}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              placeholder="Adicionar nova tarefa..."
+              disabled={isLoading}
+            />
+            <Button
+              onClick={addTask}
+              disabled={isLoading || !newTask.trim()}
+              title="Adicionar tarefa"
+              $backgroundColor="#3b82f6"
+              $hoverColor="#2563eb"
+            >
+              <Plus size={16} />
+            </Button>
+          </div>
         </div>
 
-        {error && (
-          <p>ERROR</p>
-        )}
+        {error && <p>ERROR</p>}
 
         <div className="task-list">
           {isLoading && tasks.length === 0 ? (
             <p>LOADING</p>
-          ) :
-          tasks.length === 0 ? (
+          ) : tasks.length === 0 ? (
             <EmptyState
               title="Nenhuma tarefa cadastrada"
               subtitle="Adicione uma nova tarefa acima para começar"

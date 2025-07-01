@@ -39,6 +39,18 @@ export const TodoContainer = styled.div`
     border-bottom: 1px solid #f3f4f6;
 
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1f2937;
+    }
+  }
+
+  .add-task-input {
+    display: flex;
     gap: 8px;
   }
 

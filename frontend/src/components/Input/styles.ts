@@ -8,6 +8,7 @@ export const InputContainer = styled.input`
   font-size: 16px;
   outline: none;
   transition: all 0.2s ease;
+  background-color: white;
 
   &:focus {
     border-color: #3b82f6;
